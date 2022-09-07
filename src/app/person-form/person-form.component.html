@@ -1,0 +1,83 @@
+
+<div class="container my-5">
+  <form [formGroup]="personForm" (ngSubmit)="submit()" class="col-md-8 mx-auto my-5 p-5">
+    
+    <h1 class="text-center fs-2">Person Form</h1>
+    <div class="row">
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="Enter First Name" formControlName="firstName">
+          <mat-error *ngIf="personForm.get('firstName')!.errors !== null && personForm.get('firstName')!.errors!['required']">First Name is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Middle Name</mat-label>
+          <input matInput placeholder="Enter middle Name" formControlName="middleName">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Enter Last Name" formControlName="lastName">
+          <mat-error *ngIf="personForm.get('lastName')!.errors !== null && personForm.get('lastName')!.errors!['required']">Last Name is Required</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Gender</mat-label>
+          <mat-select formControlName="gender">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+          </mat-select>
+          <mat-error *ngIf="personForm.get('gender')!.errors !== null && personForm.get('gender')!.errors!['required']">Gender is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Department</mat-label>
+          <mat-select formControlName="department">
+            <mat-option value="IT">IT</mat-option>
+            <mat-option value="HR">HR</mat-option>
+            <mat-option value="Payroll">Payroll</mat-option>
+            <mat-option value="Networking">Networking</mat-option>
+            <mat-option value="Admin">Admin</mat-option>
+          </mat-select>
+          <mat-error *ngIf="personForm.get('department')!.errors !== null && personForm.get('department')!.errors!['required']">Department is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field appearance="outline">
+          <mat-label>Date Of Birth</mat-label>
+          <input type="date" matInput placeholder="Date of Birth" formControlName="dateOfBirth">
+          <mat-error *ngIf="personForm.get('dateOfBirth')!.errors !== null && personForm.get('dateOfBirth')!.errors!['required']">Date Of Birth is Required</mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="Enter your address" formControlName="address">
+          <mat-error *ngIf="personForm.get('address')!.errors !== null && personForm.get('address')!.errors!['required']">Address is Required</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-md-4">
+        <mat-form-field appearance="outline">
+          <mat-label>Pincode</mat-label>
+          <input matInput placeholder="Enter your pincode" formControlName="pincode">
+          <mat-error *ngIf="personForm.get('pincode')!.errors !== null && personForm.get('pincode')!.errors!['required']">Pincode is Required</mat-error>
+          <mat-error *ngIf="personForm.get('pincode')!.errors !== null && !personForm.get('pincode')!.errors!['required'] && ( personForm.get('pincode')!.errors!['min'] ||  personForm.get('pincode')!.errors!['max']) ">Invalid pincode (pincode is of 6 digits)</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+</div>
